@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${pageTitle}">Default Title</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"></script>
+    <style>
+        .btn {
+            width: 100px;
+        }
+
+        .btn-return {
+            background-color: #457b9d;
+            color: #f1faee;
+            width: 220px;
+        }
+
+        .btn-dashboard {
+            background-color: #457b9d;
+            color: #f1faee;
+            width: 220px;
+        }
+
+        .btn-primary {
+            color: #f1faee;
+        }
+
+        .btn-secondary {
+            background-color: #ca6702;
+            color: #f1faee;
+        }
+
+        .btn:hover {
+            background-color: #0e9594;
+            color: #f1faee;
+        }
+
+        select {
+            font-size: 16px;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container-fluid text-center" style="margin-top: 3vh;">
+    <div><h1 th:text="${pageTitle}"></h1></div>
+
+    <div class="text-center">
+        <button type="Return" class="btn btn-return m-2" onclick="escapeFromForm()" onkeydown="escapeFromForm()">Return</button>
+        <button type="Dashboard" class="btn btn-dashboard m-4" onclick="escapeToDashboard()" onkeydown="escapeToDashboard()">Dashboard</button>
+    </div>
+
+    <form th:action="@{/warehouses/save}" method="post" th:object="${warehouse}"
+          style="max-width: 750px; margin: 0 auto;">
+        <input type ="hidden" th:field="*{id}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Name:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required/>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Location:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{location}" class="form-control" required/>
+                </div>
+            </div>
+            <br>
+            <div class="form-group row">
+                <label class="col-sm-3 col-form-label">Manager:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{manager}" class="form-control" required/>
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2" style="background-color: #6a994e; margin-right: 10px;">Save</button>
+                <button type="clear" class="btn btn-secondary m-2" onclick="clearTable()" onkeydown="clearTable()" >Clear</button>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function escapeToDashboard() {
+        window.location = "/store"
+    }
+    function escapeFromForm() {
+        window.location = "/store/warehouses";
+    }
+    function clearTable() {
+        window.location = "/store/addWarehouse"
+    }
+</script>
+</body>
+</html>

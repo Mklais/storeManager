@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd">
+    <changeSet id="1" author="MKKlais">
+        <createTable tableName="product">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="cost" type="INTEGER"/>
+            <column name="unit_of_measurement" type="VARCHAR(255)"/>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="origin" type="VARCHAR(255)"/>
+            <column name="warehouse" type="VARCHAR(255)"/>
+            <column name="product_code" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="MKKlais">
+        <createTable tableName="warehouse">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column name="location" type="VARCHAR(255)"/>
+            <column name="manager" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="MKKlais">
+        <insert tableName="product">
+            <column name="name" value="Coffee"/>
+            <column name="cost" value="9"/>
+            <column name="unit_of_measurement" value="kg"/>
+            <column name="category" value="Food"/>
+            <column name="origin" value="Brazil"/>
+            <column name="warehouse" value="Dunder Mifflin"/>
+            <column name="product_code" value="4m1VtWGc6Z"/>
+        </insert>
+        <insert tableName="product">
+            <column name="name" value="Laptop"/>
+            <column name="cost" value="2499"/>
+            <column name="unit_of_measurement" value="pcs"/>
+            <column name="category" value="Electronics"/>
+            <column name="origin" value="China"/>
+            <column name="warehouse" value="Cargo Castle"/>
+            <column name="product_code" value="I9Cdo1gKd4"/>
+        </insert>
+        <insert tableName="warehouse">
+            <column name="name" value="Invetory Inn"/>
+            <column name="location" value="Netherlands"/>
+            <column name="manager" value="Holly Fox"/>
+        </insert>
+        <insert tableName="warehouse">
+            <column name="name" value="Dunder Mifflin"/>
+            <column name="location" value="Scranton"/>
+            <column name="manager" value="Michael Scott"/>
+        </insert>
+        <insert tableName="warehouse">
+            <column name="name" value="Cargo Castle"/>
+            <column name="location" value="London"/>
+            <column name="manager" value="Fred Williams"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>
