@@ -14,6 +14,8 @@ Key Technologies:
 Java Spring Boot
 Thymeleaf (HTML template engine)
 Bootstrap (CSS framework)
+Liquibase
+
 Getting Started:
 
 Clone this repository.
